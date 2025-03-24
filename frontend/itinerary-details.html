@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Itinerary Details</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Itinerary Details</h1>
+        <button id="back-btn">Back to Dashboard</button>
+    </header>
+
+    <main>
+        <section id="itinerary-details">
+            <h2 id="itinerary-title"></h2>
+            <p id="itinerary-dates"></p>
+            
+            <h3>Activities</h3>
+            <ul id="activity-list"></ul>
+
+            <!-- Activity Management Form -->
+            <h3>Add Activity</h3>
+            <form id="add-activity-form">
+                <input type="text" id="activity-title" placeholder="Activity Title" required />
+                <input type="date" id="activity-date" required />
+                <input type="time" id="activity-time" required />
+                <input type="text" id="activity-location" placeholder="Location" required />
+                <button type="submit">Add Activity</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="itinerary-details.js"></script>
+</body>
+</html>

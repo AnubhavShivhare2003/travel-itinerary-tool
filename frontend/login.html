@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Travel Planner</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="login-form">
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
+            
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="register.html" style="color: blue; text-decoration: underline;">Sign up here</a></p>
+
+    </div>
+
+    <script src="login.js"></script> 
+    <script>
+        document.getElementById("login-form").addEventListener("submit", async function (event) {
+            event.preventDefault();
+        
+            // Get email and password input values
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+        
+            try {
+                const response = await fetch("http://localhost:5000/api/auth/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, password }),
+                });
+        
+                const data = await response.json();
+        
+                if (response.ok) {
+                    // Save token in localStorage
+                    localStorage.setItem("token", data.token);
+                    localStorage.setItem("userEmail", data.user.email);
+        
+                    // Show success message
+                    document.getElementById("message").textContent = "Login successful! Redirecting...";
+                    document.getElementById("message").style.color = "green";
+        
+                    // Redirect to dashboard or home page after 2 seconds
+                    setTimeout(() => {
+                        window.location.href = "dashboard.html";  // Redirect to dashboard
+                    }, 2000);
+                } else {
+                    // Show error message
+                    document.getElementById("message").textContent = data.message || "Invalid login!";
+                    document.getElementById("message").style.color = "red";
+                }
+            } catch (error) {
+                console.error("Login Error:", error);
+                document.getElementById("message").textContent = "Server error!";
+                document.getElementById("message").style.color = "red";
+            }
+        });
+        </script>
+        
+</body>
+</html>

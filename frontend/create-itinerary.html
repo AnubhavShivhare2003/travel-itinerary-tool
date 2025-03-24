@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Itinerary Planner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>🌍 Travel Itinerary Planner</h1>
+        <button id="dashboard-btn">🏠 Dashboard</button>
+        <button id="logout-btn">🚪 Logout</button>
+    </header>
+
+    <main>
+        <!-- Itinerary Creation Form -->
+        <section id="itinerary-form">
+            <h2>📅 Create a New Itinerary</h2>
+            <form id="new-itinerary-form">
+                <label for="title">Title:</label>
+                <input type="text" id="title" required placeholder="Enter itinerary title">
+                
+                <label for="start-date">Start Date:</label>
+                <input type="date" id="start-date" required>
+                
+                <label for="end-date">End Date:</label>
+                <input type="date" id="end-date" required>
+                
+                <button type="submit">➕ Add Itinerary</button>
+            </form>
+        </section>
+
+        <!-- List of Itineraries -->
+        <section id="itinerary-list">
+            <h2>🗂️ Your Itineraries</h2>
+            <ul id="itineraries"></ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Travel Planner | Designed for Explorers</p>
+    </footer>
+
+    <script src="dashboard.js"></script>
+    <script src="create-itinerary.js"></script>
+</body>
+</html>
+
